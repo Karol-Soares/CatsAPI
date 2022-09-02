@@ -14,6 +14,15 @@ defmodule CatsAPIWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api", CatsAPIWeb do
+    pipe_through :api
+
+    get "/", fieldCatsapiController, :index
+    get "/:id", fieldCatsapiController, :show
+    post "/", CatsapiController, :create
+    put "/:id", fieldCatsapiController, :update
+    delete "/:id", fieldCatsapiController, :delete
+  end
   scope "/", CatsAPIWeb do
     pipe_through :browser
 
