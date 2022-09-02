@@ -3,23 +3,24 @@ defmodule CatsAPIWeb.CatsapiController do
 
   use CatsAPIWeb, :controller
 
+  alias CatsAPI.Entities.Catsdb
+
   def list(conn, _params) do
     conn
     |> put_status(:ok)
-    |> render("index.json", cats: CatsAPI.Cat.get_all())
+    |> render("index.json", cats: Catsdb.get_all())
   end
 
   def show(conn, %{"id" => id}) do
     conn
     |> put_status(:ok)
-    |> render("cat.json", cat: CatsAPI.Cat.get_by_id(id))
+    |> render("cat.json", cat: Catsdb.get_by_id(id))
   end
 
   def create(conn, _params) do
-    case CatsAPI.Cat.insert(conn.body_params) do
+    case Catsdb.insert(conn.body_params) do
       {:ok, cat} ->
         conn
-        |> IO.inspect(label: :CONN)
         |> put_status(:created)
         |> render("cat.json", cat: cat)
 
