@@ -1,4 +1,4 @@
-defmodule CatsAPI.Cat do
+defmodule CatsAPI.Cats.Cat do
   @moduledoc """
   CatsAPI keeps the contexts that define your domain
   and business logic.

@@ -5,17 +5,17 @@ defmodule CatsAPIWeb.CatsapiController do
 
   alias CatsAPI.Entities.Catsdb
 
-  def list(conn, _params) do
-    conn
-    |> put_status(:ok)
-    |> render("index.json", cats: Catsdb.get_all())
-  end
+  # def list(conn, _params) do
+  #   conn
+  #   |> put_status(:ok)
+  #   |> render("index.json", cats: Catsdb.get_all())
+  # end
 
-  def show(conn, %{"id" => id}) do
-    conn
-    |> put_status(:ok)
-    |> render("cat.json", cat: Catsdb.get_by_id(id))
-  end
+  # def show(conn, %{"id" => id}) do
+  #   conn
+  #   |> put_status(:ok)
+  #   |> render("cat.json", cat: Catsdb.get_by_id(id))
+  # end
 
   def create(conn, _params) do
     case Catsdb.insert(conn.body_params) do

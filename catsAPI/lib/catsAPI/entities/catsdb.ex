@@ -1,13 +1,19 @@
 defmodule CatsAPI.Entities.Catsdb do
+ @moduledoc """
+  The Cats context.
+  """
+
+  import Ecto.Query, warn: false
   alias CatsAPI.Repo
-  alias CatsAPI.Cat
 
-  def get_all(), do: Repo.all(CatsAPI.Cat)
+  alias CatsAPI.Cats.Cat
 
-  def get_by_id(id), do: Repo.get(CatsAPI.Cat, id)
+  def get_all(), do: Repo.all(Cat)
+
+  def get_by_id(id), do: Repo.get(Cat, id)
 
   def insert(cat) do
-    %CatsAPI.Cat{}
+    %Cat{}
     |> Cat.changeset(cat)
     |> Repo.insert()
   end
