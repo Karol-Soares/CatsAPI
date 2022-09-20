@@ -22,6 +22,7 @@ defmodule CatsAPIWeb.Router do
     # put "/:id", fieldCatsapiController, :update
     # delete "/:id", fieldCatsapiController, :delete
   end
+
   scope "/", CatsAPIWeb do
     pipe_through :browser
 

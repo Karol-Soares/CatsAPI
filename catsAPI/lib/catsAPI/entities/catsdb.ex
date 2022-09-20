@@ -1,5 +1,5 @@
 defmodule CatsAPI.Entities.Catsdb do
- @moduledoc """
+  @moduledoc """
   The Cats context.
   """
 

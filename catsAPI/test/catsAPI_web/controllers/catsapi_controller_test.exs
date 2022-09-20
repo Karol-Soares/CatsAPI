@@ -1,4 +1,4 @@
-defmodule CatsApiTest  do
+defmodule CatsApiTest do
   use CatsAPIWeb.ConnCase
 
   describe "POST create" do
@@ -8,9 +8,6 @@ defmodule CatsApiTest  do
       conn = post(conn, Routes.catsapi_path(conn, :create), cats_params)
 
       assert response(conn, 201)
-      test "Error" , %{conn: conn} do
-
-      end
     end
   end
 end

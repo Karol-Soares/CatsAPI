@@ -1,7 +1,7 @@
 defmodule CatsAPI.CatsApiTest do
   use ExUnit.Case
 
-  alias  CatsAPI.Cats.Cat
+  alias CatsAPI.Cats.Cat
 
   setup do
     # Explicitly get a connection before each test

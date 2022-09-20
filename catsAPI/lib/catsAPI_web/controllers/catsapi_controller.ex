@@ -18,17 +18,8 @@ defmodule CatsAPIWeb.CatsapiController do
   # end
 
   def create(conn, _params) do
-    case Catsdb.insert(conn.body_params) do
-      {:ok, cat} ->
-        conn
-        |> put_status(:created)
-        |> render("cat.json", cat: cat)
-
-      {:error, _changeset} ->
-        conn
-        |> put_status(:bad_request)
-        |> json(%{message: "invalid_data"})
-    end
+     Catsdb.insert(conn.body_params)
+    |> handler_response(conn)
   end
 
   # def update(conn, %{"id" => id}) do
@@ -49,4 +40,10 @@ defmodule CatsAPIWeb.CatsapiController do
   #       resp(conn, :not_found, "")
   #   end
   # end
+  defp handler_response({:ok, cat}, conn) do
+      conn
+      |> put_status(:created)
+      |> render("cat.json", cat: cat)
+  end
+  defp handler_response({:error, _changeset}, conn), do: send_resp(conn, :error, "invalid_data")
 end
