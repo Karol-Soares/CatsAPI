@@ -5,7 +5,7 @@ config :catsAPI, CatsAPI.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "catsapi_dev",
+  database: "catsapi",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
