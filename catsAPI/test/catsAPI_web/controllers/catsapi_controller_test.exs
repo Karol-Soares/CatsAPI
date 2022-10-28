@@ -21,6 +21,8 @@ defmodule CatsApiTest do
       expected_body = %{"message" => "invalid_data"}
 
       assert expected_body == response_body
+
+      assert response(conn, 201)
     end
   end
 end
