@@ -5,17 +5,17 @@ defmodule CatsAPIWeb.CatsapiController do
 
   alias CatsAPI.Entities.Catsdb
 
-  # def list(conn, _params) do
-  #   conn
-  #   |> put_status(:ok)
-  #   |> render("index.json", cats: Catsdb.get_all())
-  # end
+  def list(conn, _params) do
+    conn
+    |> put_status(:ok)
+    |> render("index.json", cats: Catsdb.get_all())
+  end
 
-  # def show(conn, %{"id" => id}) do
-  #   conn
-  #   |> put_status(:ok)
-  #   |> render("cat.json", cat: Catsdb.get_by_id(id))
-  # end
+  def show(conn, %{"id" => id}) do
+    conn
+    |> put_status(:ok)
+    |> render("cat.json", cat: Catsdb.get_by_id(id))
+  end
 
   def create(conn, _params) do
     case Catsdb.insert(conn.body_params) do
@@ -31,22 +31,23 @@ defmodule CatsAPIWeb.CatsapiController do
     end
   end
 
-  # def update(conn, %{"id" => id}) do
-  #   case CatsAPI.Cat.update(String.to_integer(id), conn.body_params) do
-  #     {:ok, _user} ->
-  #       resp(conn, :ok, "")
+  def update(conn, %{"id" => id}) do
+    case Catsdb.update(String.to_integer(id), conn.body_params) do
+      {:ok, _user} ->
+        resp(conn, :ok, "")
 
-  #     {:error, :not_found} ->
-  #       resp(conn, :not_found, "")
-  #   end
-  # end
+      {:error, :not_found} ->
+        resp(conn, :not_found, "")
+    end
+  end
 
-  # def delete(conn, %{"id" => id}) do
-  #   case MyApi.User.delete(id) do
-  #     {:ok, _user} -> resp(conn, :ok, "")
+  def delete(conn, %{"id" => id}) do
+    case Catsdb.delete(id) do
+      {:ok, _user} ->
+        resp(conn, :ok, "")
 
-  #     {:error, :not_found} ->
-  #       resp(conn, :not_found, "")
-  #   end
-  # end
+      {:error, :not_found} ->
+        resp(conn, :not_found, "")
+    end
+  end
 end

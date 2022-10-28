@@ -17,11 +17,13 @@ defmodule CatsAPIWeb.Router do
   scope "/api", CatsAPIWeb do
     pipe_through :api
 
-    # get "/:id", fieldCatsapiController, :show
+    get "/", CatsapiController, :list
+    get "/:id", CatsapiController, :show
     post "/", CatsapiController, :create
-    # put "/:id", fieldCatsapiController, :update
-    # delete "/:id", fieldCatsapiController, :delete
+    put "/:id", CatsapiController, :update
+    delete "/:id", CatsapiController, :delete
   end
+
   scope "/", CatsAPIWeb do
     pipe_through :browser
 
